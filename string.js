@@ -5,7 +5,7 @@ Object.defineProperty(String.prototype,"ord",{get:function(){return(this.charCod
 Object.defineProperty(String.prototype,"i",{get:function(){return(parseInt(this))}}) // int
 Object.defineProperty(String.prototype,"f",{get:function(){return(parseFloat(this))}}) // float
 
-Object.defineProperty(String.prototype,"fl",{get:function(){return(parseInt(this))}}) // floor
+Object.defineProperty(String.prototype,"fl",{get:function(){return(Math-floor(parseFloat(this)))}}) // floor
 Object.defineProperty(String.prototype,"ce",{get:function(){return(Math.ceil(parseFloat(this)))}}) // ceil
 
 Object.defineProperty(String.prototype,"bin",{get:function(){return(Math.ceil(parseInt(this,2)))}}) // binary string to decimal
@@ -15,6 +15,13 @@ Object.defineProperty(String.prototype,"hex",{get:function(){return(Math.ceil(pa
 
 
 Object.defineProperty(String.prototype,"reverse",{get:function(){return(this.split("").reverse().join(""))}}) // reverse string
+
+String.prototype.rotate = function (len) {// rotates string
+  len = (len%this.length+this.length)%this.length
+  return this.slice(len).concat(this.slice(0,len))
+}
+
+
 
 String.prototype.tr = function(rep, sub=""){return(this.split("").map(c=>rep.includes(c)?sub[Math.min(rep.indexOf(c),sub.length-1)]:c).join(""))} // string translate
 
@@ -29,3 +36,19 @@ Object.defineProperty(String.prototype,"swcase",{get:function(){return(this.repl
 
 Object.defineProperty(String.prototype,"esc",{get:function(){return(this.replace(/[\.\\\/\+\*\?\!\[\]\(\)\{\}]/g,"\\"+"$&"))}}) // escape regex special chars
 Object.defineProperty(String.prototype,"unesc",{get:function(){return(this.replace(/\\(.)/g,"$1"))}}) // unescape all backslashes
+
+
+
+
+
+String.prototype.log = function(){
+  console.log(this.valueOf())
+}
+
+String.prototype.debug = function(func){
+  if(func){
+    console.log(func(this))
+  }else{
+    console.log(this)
+  }
+}
