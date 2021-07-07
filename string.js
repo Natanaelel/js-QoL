@@ -38,7 +38,10 @@ Object.defineProperty(String.prototype,"esc",{get:function(){return(this.replace
 Object.defineProperty(String.prototype,"unesc",{get:function(){return(this.replace(/\\(.)/g,"$1"))}}) // unescape all backslashes
 
 
+Object.defineProperty(String.prototype,"j",{get:function(){return(this.join``)}}) // join
 
+
+String.prototype.m = function(func){return this.split``.map(func)}
 
 
 String.prototype.log = function(){

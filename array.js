@@ -11,6 +11,12 @@ Object.defineProperty(Array.prototype,"last",{get:function(){return(this[this.le
 Object.defineProperty(Array.prototype,"max",{get:function(){return(this.reduce((a,b)=>Math.max(a,b)))}})
 Object.defineProperty(Array.prototype,"min",{get:function(){return(this.reduce((a,b)=>Math.min(a,b)))}})
 
+function arrClone(val){
+
+    return Array.isArray(val) ? [...val].map(clone) : val
+}
+Object.defineProperty(Array.prototype,"cp",{get:function(){return(arrClone(this))}})
+
 
 Array.prototype.sort_by=function(func=x=>x){return([...this].sort((a,b)=>func(a)-func(b)))}
 
@@ -21,6 +27,8 @@ Array.prototype.rotate = function (len) {
     return this.slice(len).concat(this.slice(0,len))
 }
 
+Array.prototype.mp = Array.prototype.map
+Array.prototype.m = function(func){return this.map(x=>func(x))}
 
 Object.defineProperty(Array.prototype,"uniq",{
     get:function(){
@@ -61,6 +69,19 @@ Array.prototype.max_by=function(func=x=>x){
     return(max)
 }
 Object.defineProperty(Array.prototype,"chr",{get:function(){return(this.map(c=>String.fromCharCode(c)))}})
+
+Object.defineProperty(Array.prototype,"tp",{get:function(){
+    let arr = []
+    for(let i=0;i<this[0].length;i++){
+        let row = []
+        for(let j=0;j<this.length;j++){
+            row.push(this[j][i])
+        }
+        arr.push(row)
+    }
+    return arr
+}})
+
 Object.defineProperty(Array.prototype,"s",{get:function(){return(this.map(c=>String.fromCharCode(c)).join(""))}})
 
 Object.defineProperty(Array.prototype,"i",{get:function(){return(this.map(e=>parseInt(e)))}})
@@ -70,12 +91,31 @@ Object.defineProperty(Array.prototype,"f",{get:function(){return(this.map(e=>par
 
 Array.prototype.log = function(){
     console.log(this.valueOf())
+    return this
 }
 
 Array.prototype.debug = function(func){
     if(func){
         console.log(func(this))
+        return this
     }else{
         console.log(this)
+        return this
     }
+}
+
+Array.prototype.shuffle = function(){
+  for (let i = this.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = this[i];
+    this[i] = array[j];
+    this[j] = temp;
+  }
+}
+Array.prototype.repeat = function(times){
+  let arr = []
+  for(let i = 0; i < times; i++){
+    arr = arr.concat(this)
+  }
+  return arr
 }
