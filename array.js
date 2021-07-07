@@ -111,6 +111,7 @@ Array.prototype.shuffle = function(){
     this[i] = this[j];
     this[j] = temp;
   }
+  return this
 }
 Array.prototype.repeat = function(times){
   let arr = []
