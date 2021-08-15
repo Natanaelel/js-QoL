@@ -57,6 +57,7 @@ Quality-of-life improvements for javascript.
   * oct -"10" => 7
   * hex -"f" => 15
   * reverse
+  * rotate(length)
   * tr(rep, sub)
   * bytes -array of each ascii code
   * ucase
