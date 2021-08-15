@@ -60,6 +60,7 @@ Quality-of-life improvements for javascript.
   * rotate(length)
   * tr(rep, sub)
   * bytes -array of each ascii code
+  * squeeze
   * ucase
   * dcase
   * swcase
