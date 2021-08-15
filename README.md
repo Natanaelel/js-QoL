@@ -8,6 +8,8 @@ Quality-of-life improvements for javascript.
   * med -mediaN
   * max
   * min
+  * first
+  * last
   * cp -copy
   * sort_by(func)
   * each_slice(length)
