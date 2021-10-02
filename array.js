@@ -82,6 +82,7 @@ Object.defineProperty(Array.prototype,"tp",{get:function(){
     return arr
 }})
 
+Object.defineProperty(Array.prototype,"j",{get:function(){return(this.flat().join``)}}) // join("")
 Object.defineProperty(Array.prototype,"s",{get:function(){return(this.map(c=>String.fromCharCode(c)).join(""))}})
 
 Object.defineProperty(Array.prototype,"i",{get:function(){return(this.map(e=>parseInt(e)))}})
@@ -119,4 +120,24 @@ Array.prototype.repeat = function(times){
     arr = arr.concat(this)
   }
   return arr
+}
+
+
+Object.defineProperty(Array.prototype, "hash", {get: function(){return Object.fromEntries(this)}})
+
+Array.prototype.take = function(length=10){return this.slice(0,length)}
+Array.prototype.drop = function(length=10){return this.slice(length)}
+
+Object.defineProperty(Array.prototype, "compact", {get: function(){return this.filter(x=>x !== null && x !== undefined)}})
+
+Array.prototype.select = function(func = v => v){return this.filter(func)}
+Array.prototype.reject = function(func = v => v){return this.filter(x => !func(x))}
+
+
+Array.prototype.intersect = function(other = []){
+    let newArr = [];
+    for(const value of this){
+        if(other.includes(value))newArr.push(value)
+    }
+    return newArr
 }

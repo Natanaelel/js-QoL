@@ -14,9 +14,9 @@ Object.defineProperty(String.prototype,"hex",{get:function(){return(Math.ceil(pa
 
 
 
-Object.defineProperty(String.prototype,"reverse",{get:function(){return(this.split("").reverse().join(""))}}) // reverse string
+Object.defineProperty(String.prototype,"rev",{get:function(){return(this.split("").reverse().join(""))}}) // reverse string
 
-String.prototype.rotate = function (len) {// rotates string
+String.prototype.rotate = function (len = 1) {// rotates string
   len = (len%this.length+this.length)%this.length
   return this.slice(len).concat(this.slice(0,len))
 }
@@ -37,8 +37,6 @@ Object.defineProperty(String.prototype,"swcase",{get:function(){return(this.repl
 Object.defineProperty(String.prototype,"esc",{get:function(){return(this.replace(/[\.\\\/\+\*\?\!\[\]\(\)\{\}]/g,"\\"+"$&"))}}) // escape regex special chars
 Object.defineProperty(String.prototype,"unesc",{get:function(){return(this.replace(/\\(.)/g,"$1"))}}) // unescape all backslashes
 
-
-Object.defineProperty(String.prototype,"j",{get:function(){return(this.join``)}}) // join
 
 
 String.prototype.m = function(func){return this.split``.map(func)}
