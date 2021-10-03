@@ -29,9 +29,9 @@ Object.defineProperty(String.prototype,"bytes",{get:function(){return(this.split
 
 Object.defineProperty(String.prototype,"squeeze",{get:function(){return(this.replace(/(.)\1+/g, m=>m[0]))}}) // string with consecutive identical chars reduced to one
 
-Object.defineProperty(String.prototype,"ucase",{get:function(){return(this.replace(/./g, m=>m.toUpperCase()))}}) // uppercase string
-Object.defineProperty(String.prototype,"dcase",{get:function(){return(this.replace(/./g, m=>m.toLowerCase()))}}) // lowercase string
-Object.defineProperty(String.prototype,"swcase",{get:function(){return(this.replace(/./g, m=>m==m.toUpperCase()?m.toLowerCase():m.toUpperCase()))}}) // swapcase string
+Object.defineProperty(String.prototype,"uc",{get:function(){return(this.replace(/./g, m=>m.toUpperCase()))}}) // uppercase string
+Object.defineProperty(String.prototype,"lc",{get:function(){return(this.replace(/./g, m=>m.toLowerCase()))}}) // lowercase string
+Object.defineProperty(String.prototype,"sc",{get:function(){return(this.replace(/./g, m=>m==m.toUpperCase()?m.toLowerCase():m.toUpperCase()))}}) // swapcase string
 
 
 Object.defineProperty(String.prototype,"esc",{get:function(){return(this.replace(/[\.\\\/\+\*\?\!\[\]\(\)\{\}]/g,"\\"+"$&"))}}) // escape regex special chars

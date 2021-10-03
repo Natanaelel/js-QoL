@@ -141,3 +141,21 @@ Array.prototype.intersect = function(other = []){
     }
     return newArr
 }
+
+Array.prototype.zip = function(other = []){
+    return this.flatMap((x,i)=>[x,other[i]])
+}
+
+
+Object.defineProperty(Array.prototype, "transpose", {get: function(){
+    let arr = []
+    let maxLength = Math.max.apply(Math, this.map(x=>x.length))
+    for(let x = 0; x < maxLength; x++){
+        let row = []
+        for(let y = 0; y < this.length; y++){
+            row.push(this[y][x])
+        }
+        arr.push(row)
+    }
+    return arr
+}})
